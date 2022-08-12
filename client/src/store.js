@@ -1,3 +1,6 @@
 import {configureStore} from'@reduxjs/toolkit'
 import userSlice from './slices/userSlices'
-export default configureStore({reducer:{user:userSlice}})
+import eventSlice from './slices/eventSlice'
+import productSlice from './slices/productSlice'
+import cartSlice from './slices/cardSlice'
+export default configureStore({reducer:{user:userSlice, event:eventSlice , product:productSlice,cart:cartSlice}})

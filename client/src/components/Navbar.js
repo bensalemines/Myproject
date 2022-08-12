@@ -12,11 +12,11 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import {Link} from 'react-router-dom';
-import CabinTwoToneIcon from '@mui/icons-material/CabinTwoTone';
-import AutoAwesomeTwoToneIcon from '@mui/icons-material/AutoAwesomeTwoTone';
+import { useSelector,useDispatch } from 'react-redux';
+import {logoutUser } from '../slices/userSlices'
+import {CardIcon,ItemsNumber} from '../styles/components.styled'
+const pages = ['Home', 'AboutUs', 'JoinUs'];
 
-const pages = ['Home', 'About Us', 'Join Us'];
-const settings = ['Profile',  'Logout'];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -36,12 +36,19 @@ const Navbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const {cartTotalQuantity} = useSelector(state => state.cart)
+  
+  const {isAuth,userInfo} = useSelector((state)=>state.user)
+  const dispatch = useDispatch()
+  const logout = () =>{
+    dispatch(logoutUser())
+  };
 
   return (
-    <AppBar position="absolute" style={{backgroundColor:'transparent', paddingLeft:'0px'}}>
+    <AppBar position="absolute" style={{backgroundColor:'transparent', paddingLeft:'0px', color:'black'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <CabinTwoToneIcon fontSize="large" sx={{ display: { xs: 'none', md: 'flex' }, mr: 0 }}  />
+         
           <Typography
             variant="h6"
             noWrap
@@ -50,14 +57,16 @@ const Navbar = () => {
             sx={{
               mr: 5,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              fontFamily: 'Acme',
               fontWeight: 700,
-              letterSpacing: '.05rem',
-              color: 'inherit',
+              letterSpacing: '.03rem',
+              color: 'black',
               textDecoration: 'none',
+             
             }}
+           
           >
-            CAMPING UNDER THE STARS <AutoAwesomeTwoToneIcon fontSize='large' sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            CAMPING UNDER THE STARS 
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -91,13 +100,13 @@ const Navbar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu} >
-                  <Typography textAlign="center" >{page}</Typography>
+                <MenuItem key={page} onClick={handleCloseNavMenu}  >
+                  <Link to={`/${page}`} textAlign="center" style={{textDecoration:'none' , color:'black', fontFamily:'Acme'}} >{page}</Link>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <CabinTwoToneIcon fontSize="large" sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+         
           <Typography
             variant="h5"
             noWrap
@@ -114,7 +123,7 @@ const Navbar = () => {
               textDecoration: 'none',
             }}
           >
-            CAMPING UNDER THE STARS <AutoAwesomeTwoToneIcon fontSize='large' sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            CAMPING UNDER THE STARS 
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'inline', md: 'flex' } }}>
             {pages.map((page) => (
@@ -122,7 +131,7 @@ const Navbar = () => {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 1, color: 'white', display: 'block' }}
+                sx={{ my: 1, color: 'black', display: 'block' , fontSize:'20px',fontWeight:'bold', fontFamily:'Acme' }}
                 style={{paddingLeft:'150px' }}
               >
                 {page}
@@ -131,19 +140,25 @@ const Navbar = () => {
             ))}
           </Box>
 
-          {true? <>
+          {!isAuth  ? <>
           <Link to="/login" style={{textDecoration: 'none'}}>
           <Button
-          style={{backgroundColor:'#637f42'}}
+          style={{backgroundColor:' #0075f6'}}
                 key={'login'}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'black', display: 'block', fontSize:'18px',fontWeight:'bold', fontFamily:'Acme' }}
               >
                 {'login'}
               </Button>
               </Link>
           </>
-          :<Box sx={{ flexGrow: 0 }}>
+          :<>
+          <CardIcon>
+            <Link to='/ShoppingCard'><img src="https://img.icons8.com/material-outlined/35/000000/shopping-cart-loaded.png" alt=""/>
+            </Link>
+            <ItemsNumber>{cartTotalQuantity}</ItemsNumber>
+            </CardIcon>
+             <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -165,13 +180,25 @@ const Navbar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem  onClick={handleCloseUserMenu}>
+                  {userInfo.role ==='admin' &&
+                  <Link to='/dashboard' textAlign="center" style={{textDecoration:'none' , color:'black'}}>
+                    Dashboard</Link>
+                    }
                 </MenuItem>
-              ))}
+            
+                <MenuItem  onClick={handleCloseUserMenu}>
+                  {userInfo.role ==='user' &&
+                  <Link to='/Profile' textAlign="center" style={{textDecoration:'none' , color:'black'}}>
+                    Profile</Link>
+                    }
+                </MenuItem>
+              <MenuItem  onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center" onClick={logout}> Lougout </Typography>
+                </MenuItem>
             </Menu>
           </Box>
+          </>
              }
         </Toolbar>
       </Container>

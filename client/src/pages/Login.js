@@ -1,36 +1,59 @@
-import React from "react";
+import { useEffect,useState  } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import{Container,SignUpContainer,Select,Form,Errors,TogglePasswordSignIn,TogglePasswordSignUp,Title,Input,Button,SignInContainer,Anchor,OverlayContainer,Overlay,LeftOverlayPanel,Paragraph,GhostButton,RightOverlayPanel} from '../styles/components.styled';
+import{Container,SignUpContainer,ErrorsMessages,Select,Form,Errors,TogglePasswordSignIn,TogglePasswordSignUp,Title,Input,Button,SignInContainer,OverlayContainer,Overlay,LeftOverlayPanel,Paragraph,GhostButton,RightOverlayPanel} from '../styles/components.styled';
 import {useForm} from 'react-hook-form';
-import {useDispatch} from 'react-redux'
-import { registerNewUser } from "../slices/userSlices";
+import {useDispatch,useSelector} from 'react-redux'
+import  { loginUser, registerNewUser,getUserData } from "../slices/userSlices";
+import {useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar'
+
 const eye = <FontAwesomeIcon icon={faEye} />;
 function Login() {
-	const dispatch = useDispatch(registerNewUser)
-	const {register,
-		handleSubmit:handleInput
-		,formState: { errors }}=useForm();
-	const onSubmit = data => {
-		
-		dispatch(registerNewUser(data))
-		console.log(data)
-	};
-
-	const [signIn, toggle] = React.useState(true);
-	const [passwordShown, setPasswordShown] = React.useState(false);
+	const [signIn, toggle] = useState(true);
+	const [passwordShown, setPasswordShown] =useState(false);
 	const togglePasswordVisiblity = () => {
 		setPasswordShown(passwordShown ? false : true);
 	  };
+	
+	const dispatch = useDispatch(registerNewUser)
+	const loginDispatch = useDispatch(loginUser)
+	const {register,handleSubmit:handleInput,formState: { errors }} =useForm();
+	const {register:inputLogin,handleSubmit:handleInfo,formState: { errors:loginErrors }} =useForm();
+
+	const onSubmit = data => {dispatch(registerNewUser(data))
+		console.log(data)};
+
+	const Submit = data => {loginDispatch(loginUser(data))
+			console.log(data)};
+	
+	
+	//   const nav = useNavigate()
+	//   const {errors:registerErrors , isAuth } = useSelector(state=>state.user);
+	//   useEffect(()=>{
+    //            if (isAuth) nav('/profile')
+	//   },[isAuth , nav]);
+
+
+	  const navig = useNavigate()
+	  const {loginErrors: loginError , isAuth,userInfo} = useSelector(state=>state.user);
+	  useEffect(()=>{
+		dispatch(getUserData)
+               if (isAuth && userInfo.role ==='user') navig('/profile') 
+			   else if(isAuth && userInfo.role ==='admin') navig('/dashbord')
+	  },[isAuth , navig,userInfo.role,dispatch])
+	 
 	 
 	 return(
+		<>
+		<Navbar/>
 		
 		 <Container>
 			 <SignUpContainer signinIn={signIn}>
 				 <Form onSubmit={handleInput(onSubmit)}>
 					 <Title>Create Account</Title>
 					  {/*FULL NAME*/}
-					 <Input type='text' name='userFullname' placeholder='Full Name...' {...register('fullName',{ required: true })} />
+					 <Input type='text' name='Fullname' placeholder='Full Name...' {...register('Fullname',{ required: true })} />
 					 {errors.FullName?.type === 'required' && "Full name is required"}
 
 					  {/*GENDER*/}
@@ -68,20 +91,27 @@ function Login() {
 					 {errors.password?.type === 'required' && "password is required"}
 					 {errors.password?.type === 'pattern' && "password must have minimunm 8 characters,1 lowercase character,1 uppercase character and 1 number"}
 					 </Errors>
+
+					 {/*SIGNUP BUTTON*/}
+					 {/* <ErrorsMessages>{registerErrors}</ErrorsMessages> */}
 					 <TogglePasswordSignUp onClick={togglePasswordVisiblity}>{eye}</TogglePasswordSignUp>
 					 <Button >Sign Up</Button>
+					 
+
 				 </Form>
 			 </SignUpContainer>
 
 			 <SignInContainer signinIn={signIn} >
-				  <Form>
+				  <Form onSubmit={handleInfo(Submit)}>
 					  <Title>Sign in</Title>
-					  <Input type='email' placeholder="Enter Your Email..."/>
+					  <Input type='email' placeholder="Enter Your Email..." {...inputLogin('email',{required:true})}/>
+					  {loginErrors.email?.type === 'required' && "Email is required"}
 					  <>
-					  <Input type={passwordShown ? "text" : "password"} placeholder='Password...' />
+					  <Input type={passwordShown ? "text" : "password"} placeholder='Password...' {...inputLogin('password',{required:true})} />
 					  <TogglePasswordSignIn onClick={togglePasswordVisiblity}>{eye}</TogglePasswordSignIn>
+					  {loginErrors.password?.type === 'required' && "Password is required"}
 					  </>
-					  <Anchor href='#'>Forgot your password?</Anchor>
+					  <ErrorsMessages>{loginError}</ErrorsMessages>
 					  <Button>Sigin In</Button>
 				  </Form>
 			 </SignInContainer>
@@ -113,6 +143,7 @@ function Login() {
 			 </OverlayContainer>
 
 		 </Container>
+		 </>
 	 )
 }
 
