@@ -3,15 +3,18 @@ import {ProductImage,ProductName,ProductStat,ProductText,ProductPrice,Add,Produc
 import { addToCart } from '../slices/cardSlice';
 import {useDispatch } from 'react-redux';
 import {useNavigate} from 'react-router-dom';
+
  const ProductCard = ({product}) => {
+ 
   const dispatch=useDispatch()
   const navigate = useNavigate()
   const handleAddToCart=(product)=>{
   dispatch(addToCart(product));
   navigate("/ShoppingCard") 
+
 }
   return (
-    <>
+  <>
     <ProductContainer>
     <ProductImage background={product.productImage}/> 
         <ProductText>

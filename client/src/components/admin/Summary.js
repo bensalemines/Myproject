@@ -2,25 +2,11 @@ import styled from 'styled-components'
 import {FaUsers, FaChartBar,FaClipboard} from 'react-icons/fa'
 import Widget from './summary-components/widget'
 import Chart from './summary-components/Chart'
-import Navbar from '../Navbar'
 import Transactions from './summary-components/Transactions'
 import AllTimeData from './summary-components/AllTimeData'
 
 
 const Summary = () => {
-//     const [users,setUsers] = useState([])
-
-//     useEffect(()=>{
-//         async function fetchData(){
-// try {
-//     const res=axios.get("/api/v1/users/stats",token)
-// } catch (err) {
-//     console.log(err)
-// }
-//         }
-//         fetchData()
-//     },[])
-
     const data =[
         {
             icon:<FaUsers/>,
@@ -51,7 +37,6 @@ const Summary = () => {
     ]
   return (
     <>
-    <Navbar/>
     <StyledSummary>
         <MainStats> 
             <Overview>
@@ -79,7 +64,7 @@ export default Summary;
 const StyledSummary = styled.div`
 width:40%;
 display:flex;
-
+margin-left:350px;
 `;
 const MainStats = styled.div`
 flex:2;
@@ -97,7 +82,7 @@ color:rgba(234,234,255,0.87);
 width:100%;
 padding:1.5rem;
 height:170px;
-margin-top:29%;
+margin-top:5%;
 border-radius:10px;
 display:flex;
 flex-direction:column;

@@ -39,8 +39,8 @@ function Login() {
 	  const {loginErrors: loginError , isAuth,userInfo} = useSelector(state=>state.user);
 	  useEffect(()=>{
 		dispatch(getUserData)
-               if (isAuth && userInfo.role ==='user') navig('/profile') 
-			   else if(isAuth && userInfo.role ==='admin') navig('/dashbord')
+               if (isAuth && userInfo.role ==='user') navig('/Home') 
+			   else if(isAuth && userInfo.role ==='admin') navig('/admin')
 	  },[isAuth , navig,userInfo.role,dispatch])
 	 
 	 

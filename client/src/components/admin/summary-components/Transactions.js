@@ -1,30 +1,28 @@
 import styled from "styled-components";
-import {useEffect,useState} from 'react';
-import { setHeaders } from "../../../slices/api";
-import axios from "axios";
+// import {useEffect,useState} from 'react';
+// import { setHeaders } from "../../../slices/api";
+// import axios from "axios";
 // import moment from "moment";
 
 const Transactions = () => {
-    const [orders,setOrders]=useState([]);
-        const [isLoading,setIsLoading]= useState(false);
-        useEffect(()=>{
-            async function fetchData(){
-                setIsLoading(true);
-                try {
-                    const res = await axios.get('/api/v1/orders/?new=true',setHeaders());
-                    setOrders(res.data);
-                } catch (error) {
-                    console.log(error)
-                }
-                setIsLoading(false)
-            }
-            fetchData();
-        },[])
+    // const [orders,setOrders]=useState([]);
+    //     const [isLoading,setIsLoading]= useState(false);
+    //     useEffect(()=>{
+    //         async function fetchData(){
+    //             setIsLoading(true);
+    //             try {
+    //                 const res = await axios.get('/api/v1/orders/?new=true',setHeaders());
+    //                 setOrders(res.data);
+    //             } catch (error) {
+    //                 console.log(error)
+    //             }
+    //             setIsLoading(false)
+    //         }
+    //         fetchData();
+    //     },[])
   return (
     <StyledTransactions>
-        {isLoading?(
-        <p>Transactions loading....</p>)
-    :(
+   
         <>
         <h3>Latest Transactions</h3>
         {
@@ -53,7 +51,7 @@ const Transactions = () => {
 }
 </>
         
-    )}
+    )
     </StyledTransactions>
   )
 }
@@ -65,7 +63,7 @@ color:rgba(234,234,255,0.87);
 padding:1rem;
 border-radius:5px;
 margin-left:100px;
-margin-top:38%;
+margin-top:12%;
 width:100%;
 `;
 

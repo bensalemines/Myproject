@@ -15,7 +15,7 @@ const authMiddleware = (req,res,next) => {
  //FOR USER PROFILE
  const isUser = (req, res, next) => {
     authMiddleware(req, res, () => {
-      if (req.user._id === req.params.id || req.user.isAdmin) {
+      if (req.user._id === req.params._id || req.user.isAdmin) {
         next();
       } else {
         res.status(403).send("Access denied. Not authorized...");

@@ -25,7 +25,7 @@ text-align:left;
 `
 export const JoinusButton = styled.button`
 cursor:pointer;
-background-color:#0075f6;
+background-color:#0000fe;
 border:2px solid #0075f6;
 padding:20px;
 color:black;
@@ -35,7 +35,7 @@ width:300px;
 font-size:20px;
 margin-top:100px;
 margin-left:250px;
-box-shadow: #0075f6 0px 8px 24px, #0075f6 0px 16px 56px, grey 0px 24px 80px;
+// box-shadow: #0075f6 0px 8px 24px, #0075f6 0px 16px 56px, grey 0px 24px 80px;
 `
 export const H= styled.div`
 margin-left:70px;
@@ -144,7 +144,7 @@ export const Input = styled.input`
 background-color: #eee;
 border: none;
 padding: 12px 15px;
-margin: 10px 0;
+margin:4px;
 width: 100%;
 border-radius:8px;
 height:30px;
@@ -156,7 +156,7 @@ font-size: 14px;
 background-color: #eee;
 border: none;
 padding: 12px 15px;
-margin: 10px 0;
+margin: 20px 0;
 width: 104%;
 border-radius:8px;
 height:50px;
@@ -180,7 +180,7 @@ height:50px;
 export const TogglePasswordSignIn = styled.i`
 display:block;
 position:absolute;
-top:390px; 
+top:370px; 
 padding:0;
 right:50px;
 @media only screen and (max-width: 780px) {
@@ -195,7 +195,7 @@ right:50px;
 export const TogglePasswordSignUp = styled.i`
 display:block;
 position:absolute;
-top:530px; 
+top:545px; 
 padding:0;
 right:50px;
 @media only screen and (max-width: 780px) {
@@ -211,7 +211,7 @@ right:50px;
 export const Button = styled.button`
    border-radius: 20px;
    border: 1px solid #addf9e;
-   background-color:#299798;
+   background-color:#0000fe;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
    color: #ffffff;
    font-size: 16px;
@@ -259,7 +259,7 @@ ${props =>
 export const Overlay = styled.div`
 background: #ff416c;
 background: -webkit-linear-gradient(to right, #b6dc9d, #299798);
-background: linear-gradient(to right, #b6dc9d, #299798);
+background: linear-gradient(to right, #0000fe, #00aae5);
 background-repeat: no-repeat;
 background-size: cover;
 background-position: 0 0;
@@ -268,6 +268,8 @@ position: relative;
 left: -100%;
 height: 100%;
 width: 200%;
+
+// background:linear-gradient(90deg, #000046 0%, #1cb5e0 100%)
 transform: translateX(0);
 transition: transform 0.6s ease-in-out;
 ${props => (props.signinIn !== true ? `transform: translateX(50%);` : null)}
@@ -896,8 +898,8 @@ margin-left:8%;
 
 export const ProductContainer = styled.div`
 display: grid;
-grid-template-columns: 400px;
-grid-template-rows: 360px 80px 60px;
+grid-template-columns: 450px;
+grid-template-rows: 390px 70px 60px;
 grid-template-areas: "image" "text" "stats";
 border-radius: 18px;
 background: white;
@@ -918,7 +920,9 @@ grid-area: text;
 margin-top:10px;
   color:#51564d;
 `
-export const ProductPrice = styled.h1``
+export const ProductPrice = styled.h1`
+margin-top:0;
+`
 export const ProductName = styled.p`
 margin-top: 0px;
 font-size: 20px;
@@ -1013,7 +1017,7 @@ border: none;
   cursor: pointer;
 `
 export const Count = styled.h1`
-padding: 0.7rem 0;
+margin-top:10px;
 `
 export const Prices = styled.div``
 export const Amount = styled.h1`
@@ -1048,6 +1052,7 @@ export const BackToProducts = styled.button`
 background-color:transparent;
 border:none;
 padding:30px;
+margin-bottom:0px;
 cursor:pointer;
 
 `
@@ -1066,19 +1071,31 @@ margin-right:70px;
 `
 export const Image = styled.img`
 margin-right:0px;
+padding-top:10px;
 `
 export const NotYetParag = styled.div`
-padding:40px;
-margin-left:35%;
-font-size:30px;
+padding:30px;
+text-align:center;
+// margin-left:20%;
+font-size:20px;
 `
 export const JumpButton = styled.button`
 border:none;
 background-color:transparent;
 cursor:pointer;
-
 `
-export const P = styled.h1`
+export const ButtonB = styled.button`
+border:2px solid green;
+padding:10px;
+background-color:transparent;
+color:orange;
+border-radius:10px;
+cursor:pointer;
+&:hover{
+  transform: scale(2)
+}
+`
+export const P = styled.h3`
 color:#f76301;
 `
 export const ShoppingTitle = styled.h1`

@@ -20,3 +20,30 @@ exports.getProductList = async (req,res)=>{
         res.status(500).json({msg:'Something went wrong!'}) 
     }
 }
+exports.deleteProduct = async(req,res)=>{
+    try {
+              await Product.findByIdAndDelete(req.params._id);
+              res.status(200).send("Product has been deleted...");
+            } catch (error) {
+              res.status(500).send(error);
+            }
+         
+}
+
+exports.editProduct = async(req,res)=>{
+    try {
+        const updatedProduct = await product.findByIdAndUpdate(
+            req.params.id,{
+                $set:
+                req.body.product,
+            },
+            {new:true}
+        ); 
+        res.status(200).send(updatedProduct)
+    } catch (error) {
+        res.status(500).send(error)
+    }
+   
+    
+
+}

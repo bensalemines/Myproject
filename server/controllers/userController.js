@@ -1,7 +1,8 @@
 const User = require('../models/userModel');
 const  bcrypt = require('bcryptjs');
 const jwt = require ('jsonwebtoken');
-const {validationResult} = require('express-validator')
+const {validationResult} = require('express-validator');
+
 
 //@desc register a new user
 //@params POST/api/v1/users/register
@@ -49,10 +50,29 @@ exports.login=async(req,res)=>{
 exports.getUserData = async(req,res)=>{
     try {
         const user = await User.findOne({_id:req.userId}).select('-password -__V');
-        if(!user) return res.status(401).json({msg:'you are not authorized'});
+        // if(!user) return res.status(401).json({msg:'you are not authorized'});
         res.json(user);
     } catch (error) {
         console.log(error)
         res.status(500).json({msg:'Something went wrong!'}) 
     }
+}
+
+exports.getUserList = async(req,res)=>{
+    try {
+        const userList = await User.find({})
+        res.json(userList);
+    } catch (error) {
+        res.status(500).json({msg:'Something went wrong!'}) 
+    }
+}
+
+exports.deleteUser = async(req,res)=>{
+    try {
+              await User.findByIdAndDelete(req.params._id);
+              res.status(200).send("user has been deleted...");
+            } catch (error) {
+              res.status(500).send(error);
+            }
+         
 }

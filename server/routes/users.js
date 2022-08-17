@@ -1,6 +1,7 @@
 const {User} = require ("../models/userModel");
 const {authMiddleware,isUser , isAdmin} = require ("../middlewares/authMiddlaware");
 const moment = require("moment");
+const { getUserList, deleteUser } = require("../controllers/userController");
 
 const router = require ("express").Router();
 
@@ -34,4 +35,6 @@ res.status(200).send(users)
 res.status(500).send(err)
    }
 });
+router.get('/getUserList',getUserList);
+router.delete('/:_id',deleteUser)
 module.exports=router;

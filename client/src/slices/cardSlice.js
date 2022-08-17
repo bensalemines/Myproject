@@ -13,16 +13,15 @@ const cartSlice = createSlice({
     //REDUCERS
     reducers:{
         addToCart:(state,action)=>{
-            const itemIndex = state.cartItems.findIndex((product) => product._id === action.payload);
-            console.log(itemIndex)
-            if(itemIndex>=0){
-               state.cartItems.cartQuantity +=1 
+            const itemIndex = state?.cartItems?.find((product) => product._id === action.payload._id);
+            if(itemIndex){
+               itemIndex.cartQuantity +=1 
                 toast.info("increased product quantity",{position:"buttom-left"})
             }else{
             state.cartItems.push( {...action.payload , cartQuantity:1});
             toast.success(`${action.payload.productName} added successfully`,{position:"bottom-left"})
         }
-        localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
+        localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
         },
         addToCard:(state,action)=>{
             const eventIndex = state.cartItems.findIndex((event) => event._id === action.payload);

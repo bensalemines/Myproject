@@ -36,9 +36,9 @@ const Navbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-  const {cartTotalQuantity} = useSelector(state => state.cart)
+  const cartTotalQuantity = useSelector((state) => state.cart.cartTotalQuantity)
   
-  const {isAuth,userInfo} = useSelector((state)=>state.user)
+  const {isAuth,userInfo } = useSelector((state)=>state.user)
   const dispatch = useDispatch()
   const logout = () =>{
     dispatch(logoutUser())
@@ -140,7 +140,7 @@ const Navbar = () => {
             ))}
           </Box>
 
-          {!isAuth  ? <>
+          {!isAuth ? <>
           <Link to="/login" style={{textDecoration: 'none'}}>
           <Button
           style={{backgroundColor:' #0075f6'}}
@@ -152,7 +152,8 @@ const Navbar = () => {
               </Button>
               </Link>
           </>
-          :<>
+          : userInfo.role ==="user"?
+            <>
           <CardIcon>
             <Link to='/ShoppingCard'><img src="https://img.icons8.com/material-outlined/35/000000/shopping-cart-loaded.png" alt=""/>
             </Link>
@@ -182,22 +183,64 @@ const Navbar = () => {
             >
                 <MenuItem  onClick={handleCloseUserMenu}>
                   {userInfo.role ==='admin' &&
-                  <Link to='/dashboard' textAlign="center" style={{textDecoration:'none' , color:'black'}}>
+                  <Link to='/Dashboard' textAlign="center" style={{textDecoration:'none' , color:'black'}}>
                     Dashboard</Link>
                     }
                 </MenuItem>
             
                 <MenuItem  onClick={handleCloseUserMenu}>
                   {userInfo.role ==='user' &&
-                  <Link to='/Profile' textAlign="center" style={{textDecoration:'none' , color:'black'}}>
+                  <Link to='/Home' textAlign="center" style={{textDecoration:'none' , color:'black'}}>
                     Profile</Link>
                     }
                 </MenuItem>
               <MenuItem  onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center" onClick={logout}> Lougout </Typography>
+                  <Typography textAlign="center" onClick={logout}> Logout </Typography>
                 </MenuItem>
             </Menu>
           </Box>
+          </>:
+          <>
+             <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+                <MenuItem  onClick={handleCloseUserMenu}>
+                  {userInfo.role ==='admin' &&
+                  <Link to='/Dashboard' textAlign="center" style={{textDecoration:'none' , color:'black'}}>
+                    Dashboard</Link>
+                    }
+                </MenuItem>
+            
+                <MenuItem  onClick={handleCloseUserMenu}>
+                  {userInfo.role ==='user' &&
+                  <Link to='/Home' textAlign="center" style={{textDecoration:'none' , color:'black'}}>
+                    Profile</Link>
+                    }
+                </MenuItem>
+              <MenuItem  onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center" onClick={logout}> Logout </Typography>
+                </MenuItem>
+            </Menu>
+            </Box>
           </>
              }
         </Toolbar>

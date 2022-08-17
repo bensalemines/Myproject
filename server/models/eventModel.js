@@ -6,23 +6,23 @@ const eventSchema = mongoose.Schema({
     },
     eventDate:{
         type:String,
-        required:true,
+        // required:true,
     },
     eventActivities:{
         type:String,
-        required:true, 
+        // required:true, 
     },
     detailedActivities:{
         type:String,
-        required:true, 
+        // required:true, 
     },
     eventDescription:{
         type:String,
-        required:true,
+        // required:true,
     },
     detailedDescription:{
         type:String,
-        required:true,
+        // required:true,
     },
     eventPrice:{
         type:String,

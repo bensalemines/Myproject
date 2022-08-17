@@ -1,6 +1,6 @@
 const express = require ('express');
 const router = express.Router() ;
-const{createEvent,getEventList} = require('../controllers/eventController.js');
+const{createEvent,getEventList,deleteEvent, editEvent} = require('../controllers/eventController.js');
 const multer = require ('multer');
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -16,4 +16,6 @@ const storage = multer.diskStorage({
 
 router.post('/addEvent',upload.single('event-image'),createEvent)
 router.get('/',getEventList )
+router.delete('/:_id',deleteEvent)
+router.put('/update/:_id', editEvent)
 module.exports = router

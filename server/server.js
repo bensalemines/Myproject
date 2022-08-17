@@ -14,7 +14,7 @@ app.use('/api/v1/users',require ('./routes/appRoutes'));
 app.use('/api/v1/events',require('./routes/eventRoutes'));
 app.use('/api/v1/products',require('./routes/productRoutes'));
 app.use('/api/v1/stripe',require('./routes/stripeRoutes'));
-app.use('/api/v1/users' , require('./routes/users') )
+app.use('/api/v1/users' , require('./routes/users'))
 //Images Routes
 app.use('/uploads',express.static('./uploads'))
 
