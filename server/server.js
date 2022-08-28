@@ -4,7 +4,7 @@ require ('dotenv') .config({path:'C:/Users/HP/Desktop/CAMPING UNDER THE STARS/.e
 app.use(express.json());
 const port = process.env.PORT || 4500;
 const cors= require('cors');
-app.use(cors({ origin: 'https://campingunderthestars.herokuapp.com/'}));
+app.use(cors({ origin: 'https://campingunderthestars.herokuapp.com'}));
 
 //database configuration
 const connectDB = require('./config/connectDB');
