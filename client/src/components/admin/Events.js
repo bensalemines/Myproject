@@ -70,7 +70,7 @@ const eventList =useSelector((state)=> state.event.eventList)
     <div style={{marginLeft:'50%'}}>
       <CreateEvent/>
     </div>
-    <div style={{ height: 430, width: '55%', marginLeft:'550px',marginTop:'150px', border:'black solid 4px' }}>
+    <div style={{ height: 430, width: '55%', marginLeft:'550px',marginTop:'50px', border:'black solid 4px' }}>
       <DataGrid
         rows={rows}
         columns={columns}

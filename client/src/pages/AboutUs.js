@@ -1,5 +1,5 @@
 import React from 'react';
-import{Head,AboutUsImage,Icons1,DesqT,Icon1,Footer,JoinParag,Ligne,RegisterButton,Instagram,Tweeter,FooterButtom,Pages,HomePage,AboutPage,JoinPage,Copyright,SocialMedia,Facebook,Projection,Fishing,Desq,Icon8,Music,Camp,Icon2,Icon3,Rafting,Icon4,Viewing,Icons2,Icon5,Biking,Icon6,Hiking,Ligne1,Ligne2,Icon7,ExperienceTitle,History,AboutTitle,Activities,Intro,Image3,UnderTitle,Introduction,Images,Image1,Team,Des,Image2,Localisation,} from '../styles/components.styled'
+import{Head,AboutUsImage,Icons1,DesqT,Icon1,Footer,JoinParag,Ligne,RegisterButton,FooterButtom,Pages,HomePage,AboutPage,JoinPage,Copyright,Projection,Fishing,Desq,Icon8,Music,Camp,Icon2,Icon3,Rafting,Icon4,Viewing,Icons2,Icon5,Biking,Icon6,Hiking,Ligne1,Ligne2,Icon7,ExperienceTitle,History,AboutTitle,Activities,Intro,Image3,UnderTitle,Introduction,Images,Image1,Team,Des,Image2,Localisation,} from '../styles/components.styled'
 import Group from '../assets/Team.png'
 import team from '../assets/img1.png'
 import local from '../assets/localisation.png'
@@ -16,9 +16,9 @@ const AboutUs = () => {
   const url6 = "https://img.icons8.com/ios/100/000000/fishing-pole.png";
   const url7 = "https://img.icons8.com/ios/100/000000/movie-projector.png";
   const url8 = "https://img.icons8.com/ios/100/000000/guitarist.png";
-  const facebook = "https://img.icons8.com/ios/50/40C057/facebook-f.png";
-  const instagram = "https://img.icons8.com/ios/50/40C057/instagram-new--v1.png"
-  const tweeter = "https://img.icons8.com/ios/50/40C057/twitter--v1.png"
+  // const facebook = "https://img.icons8.com/ios/50/40C057/facebook-f.png";
+  // const instagram = "https://img.icons8.com/ios/50/40C057/instagram-new--v1.png"
+  // const tweeter = "https://img.icons8.com/ios/50/40C057/twitter--v1.png"
   
   
   return (
@@ -104,11 +104,11 @@ const AboutUs = () => {
       <Ligne>You can be a part of us!</Ligne>
       <Link to='/Login'><RegisterButton>Register Now</RegisterButton></Link>
       </JoinParag>
-      <SocialMedia>
+      {/* <SocialMedia>
         <Link to='/contact'> <Facebook src={facebook}></Facebook></Link>
         <Link to='/instagram'><Instagram src={instagram}></Instagram></Link>
         <Link to='/tweeter'><Tweeter src={tweeter}></Tweeter></Link>
-      </SocialMedia>
+      </SocialMedia> */}
       <FooterButtom>
       <Pages>
       <Link to='/Home'><HomePage>Home</HomePage></Link>

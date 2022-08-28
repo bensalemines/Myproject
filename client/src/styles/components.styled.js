@@ -1,13 +1,12 @@
 
 import styled from "styled-components";
+
 //HOME PAGE 
 
 
 export const Landing = styled.div`
-background-color:white;
-width:100%;
-height:100vh;
-
+display: grid;
+  grid-template-columns: 650px 150px;
 `
 export const LeftSide = styled.div`
 padding-top:250px;
@@ -15,39 +14,56 @@ padding-top:250px;
 export const RightSide = styled.div`
 padding-left:150px;
 margin-left:50%;
-
 `
-export const Quote = styled.h1`
-color:#f75b1e;
-font-size:60px;
-padding-left:40px;
+export const Quote = styled.div`
+color:black;
+margin-top:-120px;
 text-align:left;
+margin-left:40px;
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 `
 export const JoinusButton = styled.button`
-cursor:pointer;
-background-color:#0000fe;
-border:2px solid #0075f6;
-padding:20px;
-color:black;
-border-radius:10px;
-font-weight:bold;
-width:300px;
-font-size:20px;
-margin-top:100px;
-margin-left:250px;
-// box-shadow: #0075f6 0px 8px 24px, #0075f6 0px 16px 56px, grey 0px 24px 80px;
+margin-top:40px;
+margin-left:180px;
+display: inline-block;
+outline: 0;
+padding:10px;
+width:250px;
+border:0;
+cursor: pointer;
+text-decoration: none;
+position: relative;
+color: #000;
+background: #fff;
+line-height: 30px;
+border-radius: 40px;
+font-size: 20px;
+font-weight: bold;
+box-shadow: rgb(255, 198, 0) -2px -2px 0px 2px, #0000f6 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
+transition: all 0.2s;
+&:hover{
+    box-shadow: #0000f6 -2px -2px 0px 2px, rgb(255, 198, 0) 0px 0px 0px 4px, rgba(0, 0, 0, 0.05) 0px 0px 2px 7px;
+    transform: scale(1.01);
+}
+
 `
-export const H= styled.div`
-margin-left:70px;
+export const H= styled.p`
+padding-left:60px;
 margin-bottom:2px;
+font-size:60px;
+font-family: 'Lobster', cursive;
 `
-export const A = styled.div`
+export const A = styled.p`
 margin-top:20px;
+font-size:25px;
+word-break: break-all;
+padding-left:50px;
+padding-right:60px;
 `
 export const ImageHome = styled.img`
-margin-right:40px;
-margin-top:-530px;
-width:90%;
+width:108vh;
+margin-right:130px;
+margin-top:40px;
 `
 
 // export const ImageHome = styled.img`
@@ -70,10 +86,10 @@ export const CardIcon = styled.div`
 margin-right:60px;
 margin-top:10px;
 display:flex;
-
 `
+
 export const ItemsNumber = styled.p`
-background:linear-gradient(315deg, #f77b01 0%, #f8a000 74%);
+background:rgb(255, 198, 0);
 border-radius:100%;
 margin-bottom:8px;
 color:white;
@@ -327,7 +343,7 @@ margin-top:150px;
 position:absolute;
 color:black;
 margin-left:65%;
-color:#ea4f0c;
+color:rgb(255, 198, 0);
 
 ` 
 export const AboutUsImage = styled.img`
@@ -358,7 +374,7 @@ export const UnderTitle = styled(Title)`
 font-size:40px;
 text-align:center;
 margin-top:70px;
-color:#ea4f0c;
+color:#0a00f7;
 `
 export const Introduction = styled.p`
 text-align:center;
@@ -475,7 +491,7 @@ color:#7c7c7c;
 export const Ligne2 = styled.h1`
 text-align:center;
 margin-top:20px;
-color:green;
+color:rgb(255, 198, 0);
 font-size:60px;
 `
 //FOOTER
@@ -530,17 +546,33 @@ text-decoration: none;
 
 `
 export const RegisterButton = styled.button`
-margin-top:20px;
-padding:20px;
-width:200px;
-background-color:#0075f6;
-color:black;
-font-weight: bold;
-border:#0075f6;
-border-radius:5px;
-&:hover{
-  transform: translateY(-7px);
+outline: 0;
+grid-gap: 8px;
+align-items: center;
+background: 0 0;
+border: 1px solid #000;
+border-radius: 4px;
+cursor: pointer;
+display: inline-flex;
+flex-shrink: 0;
+font-size: 16px;
+gap: 8px;
+justify-content: center;
+line-height: 1.5;
+overflow: hidden;
+padding: 12px 16px;
+text-decoration: none;
+text-overflow: ellipsis;
+transition: all .14s ease-out;
+white-space: nowrap;
+:hover {
+    box-shadow: 4px 4px 0 #000;
+    transform: translate(-4px,-4px);
 }
+:focus-visible{
+    outline-offset: 1px;
+}
+
 `
 export const Pages = styled.div`
 // display:flex;
@@ -664,10 +696,9 @@ export const CardStatWrapper = styled.div`
   /* grid-template-columns: 1fr 1fr 1fr; */
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
-
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  background: #f75b1e;
+  background-image: linear-gradient(to right top, #004cf7, #256afc, #4884fe, #6b9dfc, #8eb5f8);
 `;
 
 export const CardStats = styled.div`
@@ -680,9 +711,10 @@ export const CardStats = styled.div`
 `;
 
 export const LinkText = styled.button`
-  color: #fff;
+  color: black;
   text-decoration: none;
   font-size:20px;
+  font-weight:bold;
   padding:20px;
   background-color:transparent;
   border:none;
@@ -750,19 +782,22 @@ margin-bottom:-20px;
 
 export const EventDescription = styled.p`
 text-align:center;
-padding:16px;
+margin-left:60px;
+margin-top:20px;
 font-size:25px;
 color:black;
 `
 export const TextTitle = styled.h1`
 text-align:center;
-
 font-size:50px;
 padding:30px;
+margin-top:-50px;
 color:#f6a530;
 `
 export const PageContainer = styled.div`
-margin:30px;
+margin-top:90px;
+margin-left:160px;
+margin-right:160px;
 border-radius:30px;
 box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 70px, rgba(0, 0, 0, 0.12) 0px -12px 40px, rgba(0, 0, 0, 0.12) 0px 4px 10px, rgba(0, 0, 0, 0.17) 0px 20px 13px, rgba(0, 0, 0, 0.09) 20px -3px 20px;
 `
@@ -772,11 +807,12 @@ padding:30px;
 font-size:25px;
 color:black;
 margin-left:20px;
+margin-top:-30px;
 `
 export const Price =  styled.h1`
 color:black;
 margin-left:250px;
-margin-top:-30px;
+margin-top:-60px;
 `
 export const CardText = styled.div`
 padding:60px;
@@ -786,13 +822,13 @@ padding:60px;
 export const TextDate = styled.h1`
 text-align:center;
 color:#00007c;
+margin-top:-30px;
 `
 export const Subtitle = styled.h2`
-color:#00007c;
 font-size:30px;
 text-align:left;
 margin-left:70px;
-margin-top:40px;
+margin-top:30px;
 `
 export const Back = styled.button`
 width: 50px;
@@ -918,10 +954,12 @@ background-size: cover;
 export const ProductText = styled.div`
 grid-area: text;
 margin-top:10px;
-  color:#51564d;
+color:rgb(255, 198, 0);
+background:transparent;
 `
 export const ProductPrice = styled.h1`
 margin-top:0;
+
 `
 export const ProductName = styled.p`
 margin-top: 0px;
@@ -931,11 +969,12 @@ min-width: 0px;
 margin: 0px;
 `
 export const Add = styled.button`
-color:white;
-background-color:#ff7900;
+color:black;
 border:none;
+font-weight:bold;
 border-radius:10px;
 cursor: pointer;
+background-image: linear-gradient(to right top, #004cf7, #256afc, #4884fe, #6b9dfc, #8eb5f8);
 `
 
 
@@ -944,7 +983,7 @@ grid-area: stats;
 display: grid;
 border-bottom-left-radius: 15px;
 border-bottom-right-radius: 15px;
-background-color: #ff7900;
+background-image: linear-gradient(to right top, #004cf7, #256afc, #4884fe, #6b9dfc, #8eb5f8);
 `
 //SHOPPING CART
 export const Carte = styled.div`

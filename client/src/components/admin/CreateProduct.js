@@ -29,7 +29,6 @@ const CreateProduct = () => {
 
 
   const TransformFileData = (file) => {
-    const reader = new FileReader();
 
     if (file) {
       // reader.readAsDataURL(file);
@@ -115,7 +114,7 @@ export default CreateProduct;
 const AddProduct = styled.button`
 border:none;
 outline:none;
-margin-top:30px;
+margin-top:-30px;
 padding:20px;
 font-weight:bold;
 color:white;

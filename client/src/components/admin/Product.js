@@ -67,7 +67,7 @@ export default function Product() {
     <div style={{marginLeft:'50%'}}>
       <CreateProduct/>
     </div>
-    <div style={{ height: 300, width: '50%', marginLeft:'550px',marginTop:'150px', border:'black solid 4px' }}>
+    <div style={{ height: 300, width: '50%', marginLeft:'550px',marginTop:'50px', border:'black solid 4px' }}>
       <DataGrid
         rows={rows}
         columns={columns}

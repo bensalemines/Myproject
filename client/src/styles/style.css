@@ -1,10 +1,16 @@
 .link-active{
-    color:#aaafcf;
-    border-left: 3px solid #aaafcf;
-    padding-left:5px;
+    border-right: 5px solid #0000fe;
+    padding-right:15px;
     border-radius:2px;
-    
+    background-color:#aabcd5;
+    padding:20px;
   }
   .link-inactive{
     color:white;
   }
+.background{
+  background-color:#191f39;
+  padding:0px;
+  margin:0px;
+  border-radius:10px;
+}

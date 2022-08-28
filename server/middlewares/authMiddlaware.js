@@ -12,24 +12,24 @@ const authMiddleware = (req,res,next) => {
         res.status(500).json({msg:'Something went wrong!'})  
     }
  }
- //FOR USER PROFILE
- const isUser = (req, res, next) => {
-    authMiddleware(req, res, () => {
-      if (req.user._id === req.params._id || req.user.isAdmin) {
-        next();
-      } else {
-        res.status(403).send("Access denied. Not authorized...");
-      }
-    });
-  };
-  //FOR ADMIN
-  const isAdmin = (req, res, next) => {
-    authMiddleware(req, res, () => {
-      if (req.user.isAdmin) {
-        next();
-      } else {
-        res.status(403).send("Access denied. Not authorized...");
-      }
-    });
-  };
- module.exports = {authMiddleware,isUser,isAdmin};
+//  //FOR USER PROFILE
+//  const isUser = (req, res, next) => {
+//     authMiddleware(req, res, () => {
+//       if (req.user._id === req.params._id || req.user.isAdmin) {
+//         next();
+//       } else {
+//         res.status(403).send("Access denied. Not authorized...");
+//       }
+//     });
+//   };
+//   //FOR ADMIN
+//   const isAdmin = (req, res, next) => {
+//     authMiddleware(req, res, () => {
+//       if (req.user.isAdmin) {
+//         next();
+//       } else {
+//         res.status(403).send("Access denied. Not authorized...");
+//       }
+//     });
+//   };
+ module.exports = {authMiddleware};

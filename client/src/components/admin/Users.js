@@ -19,11 +19,12 @@ export default function Users() {
     const rows =  userList && userList.map(user=>{
         return{
             id: user._id,
-            userName:`${user.userName} ${user.userLastName}`,
+            userName:user.userFullname,
             gender:user.gender,
             email:user.email,
             pNumber:user.phoneNumber,
             age:user.age,
+            role:user.role,
 
 
         }
@@ -47,6 +48,7 @@ export default function Users() {
         type: 'number',
         width: 120,
       },
+      { field: 'role', headerName: 'ROLE', width: 80 },
       {
         field: 'actions',
         headerName: 'Actions',
@@ -72,7 +74,7 @@ export default function Users() {
     {/* <div style={{marginLeft:'50%'}}>
       <CreateProduct/>
     </div> */}
-    <div style={{ height: 500, width: '60%', marginLeft:'550px',marginTop:'100px', border:'black solid 4px' }}>
+    <div style={{ height: 500, width: '60%', marginLeft:'550px', border:'black solid 4px' }}>
       <DataGrid
         rows={rows}
         columns={columns}
