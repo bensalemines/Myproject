@@ -6,7 +6,7 @@ import {BrowserRouter} from 'react-router-dom'
 import axios from 'axios'
 import {Provider} from 'react-redux'
 import store from './store'
-axios.defaults.baseURL='http://localhost:4500';
+axios.defaults.baseURL='https://campingunderthestars.herokuapp.com/';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

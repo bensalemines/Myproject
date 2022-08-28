@@ -4,7 +4,7 @@ require ('dotenv') .config({path:'C:/Users/HP/Desktop/CAMPING UNDER THE STARS/.e
 app.use(express.json());
 const port = process.env.PORT || 4500;
 const cors= require('cors');
-app.use(cors());
+app.use(cors({ origin: 'https://campingunderthestars.herokuapp.com/'}));
 
 //database configuration
 const connectDB = require('./config/connectDB');
@@ -22,9 +22,5 @@ app.use('/uploads',express.static('./uploads'))
 const path = require('path')
 if(process.env.NODE_ENV ==='deployment'){
     app.use(express.static(path.join(__dirname ,'../','client','build')))
-    // app.get('*',(req,res)=>{
-    //     res.sendFile(path.join(__dirname ,'../','client','build','index.html'))
-    // })
 }
-
 app.listen(port, ()=>console.log(`server is running on ${port}`));
