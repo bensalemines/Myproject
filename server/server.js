@@ -21,8 +21,9 @@ app.use('/uploads',express.static('./uploads'))
 //deployment setting
 const path = require('path')
 if(process.env.NODE_ENV ==='deployment'){
-    app.use(express.static(path.join(__dirname ,'../','client','build')))
     app.get('*',(req,res)=>res.sendFile(__dirname ,'../','client','build','index.html'))
+    app.use(express.static(path.join(__dirname ,'../','client','build')))
+   
 }
 
 
